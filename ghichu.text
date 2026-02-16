@@ -1,0 +1,11 @@
+PHÂN TÍCH CẢM XÚC NGƯỜI DÙNG MXH TIK TOK 
+  Dữ liệu thô  file Json thu thập từ Apify ( dataset_tiktok-scraper.json)-> csvcsv
+        Dữ liệu tik tok ( kênh rixi404)
+            link 3 video phân tích:
+            video 1: https://vt.tiktok.com/ZSmjrStC5/
+            video 2: https://vt.tiktok.com/ZSmjrrewk/
+            video 3: https://vt.tiktok.com/ZSmjrH41n/
+            
+comments_only.csv = bản raw (chỉ comment gốc).
+comments_analyzed.csv = bản đã xử lý (thêm cột và có thể đã lọc bớt dòng khi phân tích).
+
