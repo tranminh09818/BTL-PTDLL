@@ -1,47 +1,34 @@
-# PHÂN TÍCH CẢM XÚC NGƯỜI DÙNG MXH TIK TOK
+# BTL - Phân tích cảm xúc người dùng mxh TikTok
 
-Dự án này thực hiện thu thập, làm sạch, tích hợp và phân tích cảm xúc từ các bình luận trên mạng xã hội TikTok.
+## Mục tiêu
+Phân tích cảm xúc (sentiment analysis) từ comments dưới 3 video TikTok kênh @rixi404, dùng dữ liệu từ Apify scraper.
 
-## 📂 Cấu trúc dự án
+## Quy trình (theo chu trình môn học)
+1. Thu thập dữ liệu (Lecture 2): Apify TikTok Scraper → JSON metadata → extract/fetch comments → `comments_only.csv`.
+2. Làm sạch & chuẩn hóa (Lecture 3): Clean missing/duplicates, giữ emoji/multilingual, thêm features (text_length, emoji_sent_score, sentiment_simple).
+3. EDA & Trực quan hóa (Lecture 4-6): Stats (mean length, top words, phân bố sentiment), chart (histogram, bar sentiment, wordcloud, scatter).
+4. Modeling (Lecture 7): Sentiment classification tạm (rule-based), sẵn sàng mở rộng hồi quy tuyến tính (predict likes).
 
-- `data/`: Chứa dữ liệu thô (JSON), script trích xuất và các file CSV kết quả.
-- `chart/`: Chứa các biểu đồ trực quan hóa sau khi phân tích.
-- `analyze_comments.py`: Script chính để làm sạch dữ liệu, phân tích cảm xúc và vẽ biểu đồ.
-- `data/extract_comments.py`: Script để chuyển đổi dữ liệu thô từ JSON sang CSV.
+## Cách chạy
+- Cài thư viện: `pip install pandas matplotlib wordcloud emoji underthesea`
+- Chạy: `python analyze_comments.py`
+- Output:
+  - `data/comments_analyzed.csv` (data sạch + features)
+  - `chart/` (4 file png EDA: bar sentiment, histogram length, wordcloud, scatter likes-length)
 
-## 🚀 Hướng dẫn cài đặt
+## Insight chính từ EDA
+- Neutral chiếm ~87% (comment trung lập hoặc ngắn).
+- Positive ~8.1% > Negative ~4.7% → xu hướng tích cực từ emoji và nội dung video.
+- Top từ phổ biến: 'i', 'a', 'you', 'the', 'to'... (mixed tiếng Anh + tiếng Việt, emoji góp phần lớn positive).
 
-Cài đặt các thư viện Python cần thiết:
+## Thành viên
+- [TRẦN HOÀNG MINH 671688 / Nhóm 11],
+- [LÊ VĂN NGUYÊN 66.../ Nhóm 11]
 
-```bash
-pip install pandas requests matplotlib wordcloud emoji underthesea
-```
-
-## 📝 Hướng dẫn sử dụng
-
-### Bước 1: Thu thập và Tích hợp dữ liệu
-Chạy file `extract_comments.py` để trích xuất bình luận từ file JSON (thu thập từ Apify) và lưu vào file CSV.
-
-```bash
-python data/extract_comments.py
-```
-*   **Input**: File JSON trong thư mục `data/` (ví dụ: `dataset_tiktok-scraper.json`).
-*   **Output**: `data/comments_only.csv`.
-
-### Bước 2: Làm sạch, Phân tích và Trực quan hóa
-Chạy file `analyze_comments.py` để xử lý dữ liệu, tính điểm cảm xúc và tạo biểu đồ.
-
-```bash
-python analyze_comments.py
-```
-*   **Input**: `data/comments_only.csv`.
-*   **Output**:
-    *   File dữ liệu đã xử lý: `data/comments_analyzed.csv`.
-    *   Biểu đồ trong thư mục `chart/`:
-        *   `eda_text_length_hist.png`: Phân bố độ dài bình luận.
-        *   `eda_sentiment_bar.png`: Phân bố cảm xúc (Tích cực/Tiêu cực/Trung tính).
-        *   `eda_wordcloud.png`: Mây từ khóa phổ biến.
-        *   `eda_likes_vs_length_scatter.png`: Tương quan giữa độ dài và lượt thích.
-
----
+## Nguồn dữ liệu
+- Apify TikTok Scraper
+- Video phân tích:
+  - https://vt.tiktok.com/ZSmjrStC5/
+  - https://vt.tiktok.com/ZSmjrrewk/
+  - https://vt.tiktok.com/ZSmjrH41n/
 *Bài tập lớn môn Phân tích dữ liệu lớn (PTDLL)*
