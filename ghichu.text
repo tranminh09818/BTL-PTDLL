@@ -1,11 +1,15 @@
-PHÂN TÍCH CẢM XÚC NGƯỜI DÙNG MXH TIK TOK 
-  Dữ liệu thô  file Json thu thập từ Apify ( dataset_tiktok-scraper.json)-> csvcsv
+ PHÂN TÍCH CẢM XÚC NGƯỜI DÙNG MXH TIK TOK 
+  1 Dữ liệu thô  file Json THU THẬP từ Apify ( dataset_tiktok-scraper.json)-> csv [Lecture 2]
         Dữ liệu tik tok ( kênh rixi404)
             link 3 video phân tích:
             video 1: https://vt.tiktok.com/ZSmjrStC5/
             video 2: https://vt.tiktok.com/ZSmjrrewk/
             video 3: https://vt.tiktok.com/ZSmjrH41n/
             
-comments_only.csv = bản raw (chỉ comment gốc).
-comments_analyzed.csv = bản đã xử lý (thêm cột và có thể đã lọc bớt dòng khi phân tích).
+    comments_only.csv = bản raw (chỉ comment gốc).
+    comments_analyzed.csv = bản đã xử lý (thêm cột và có thể đã lọc bớt dòng khi phân tích).
+  2 2.1 Làm sạch và chuẩn hóa dữ liệu(tích hơp dlieu) [Lecture 3]
+    2.2 Phân tích và khám phá dữ liệu (EDA) [Lecture 4] + trực quan hóa [đầu Lecture 5+6]
+    >> biểu đồ /chart (4 biểu đồ eda)
+       
 
