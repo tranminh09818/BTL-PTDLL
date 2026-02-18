@@ -11,6 +11,9 @@ import re
 import os
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
 
 # Tạo thư mục
 os.makedirs('data', exist_ok=True)
@@ -198,3 +201,26 @@ else:
     print("Không có cột 'likes' → bỏ qua scatter.")
 
 print("\nHoàn thành! Charts đã lưu trong chart.")
+
+# PHẦN 3: MODELING - Hồi quy tuyến tính (Lecture 7)
+print("\nBƯỚC 3: MODELING - Hồi quy tuyến tính (Lecture 7)")
+
+if 'likes' in df.columns:
+    X = df[['text_length', 'emoji_sent_score', 'num_words']].fillna(0)
+    y = df['likes']
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    model = LinearRegression()
+    model.fit(X_train, y_train)
+
+    y_pred = model.predict(X_test)
+    mse = mean_squared_error(y_test, y_pred)
+    rss = mse * len(y_test)
+
+    print(f"RSS (Loss thực nghiệm): {rss:.2f}")
+    print(f"MSE: {mse:.2f}")
+    print("Hệ số w (coefficients):", model.coef_)
+    print("Intercept w0:", model.intercept_)
+else:
+    print("Không có cột 'likes' → bỏ qua hồi quy.")
