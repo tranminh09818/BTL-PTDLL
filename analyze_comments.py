@@ -26,7 +26,7 @@ analyzed_file = 'data/comments_analyzed.csv'
 plt.rcParams['font.family'] = 'Segoe UI'
 plt.rcParams['font.sans-serif'] = ['Segoe UI', 'Arial', 'Tahoma']
 
-# PHẦN 1: LÀM SẠCH & CHUẨN HÓA (giữ nguyên của bạn)
+# PHẦN 1: LÀM SẠCH & CHUẨN HÓA
 print("BƯỚC 1: LÀM SẠCH & CHUẨN HÓA DỮ LIỆU")
 
 try:
