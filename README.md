@@ -16,6 +16,18 @@ Phân tích cảm xúc (sentiment analysis) từ comments dưới 3 video TikTok
   - `data/comments_analyzed.csv` (data sạch + features)
   - `chart/` (5 file png: bao gồm biểu đồ hồi quy dự đoán like)
 
+## 🐳 Chạy bằng Docker
+
+1. **Build image:**
+   ```bash
+   docker build -t btl-tiktok-sentiment .
+   ```
+2. **Run container:**
+   ```bash
+   docker run -v ${PWD}/chart:/app/chart btl-tiktok-sentiment
+   ```
+   *(Lệnh trên sẽ chạy phân tích và lưu biểu đồ vào thư mục `chart/` trên máy thật)*
+
 ## Insight chính từ EDA
 - Neutral chiếm ~87% (comment trung lập hoặc ngắn).
 - Positive ~8.1% > Negative ~4.7% → xu hướng tích cực từ emoji và nội dung video.
