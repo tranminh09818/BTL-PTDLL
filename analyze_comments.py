@@ -26,7 +26,7 @@ analyzed_file = 'data/comments_analyzed.csv'
 plt.rcParams['font.family'] = 'Segoe UI'
 plt.rcParams['font.sans-serif'] = ['Segoe UI', 'Arial', 'Tahoma']
 
-# PHẦN 1: LÀM SẠCH & CHUẨN HÓA (giữ nguyên của bạn)
+# PHẦN 1: LÀM SẠCH & CHUẨN HÓA
 print("BƯỚC 1: LÀM SẠCH & CHUẨN HÓA DỮ LIỆU")
 
 try:
@@ -222,5 +222,17 @@ if 'likes' in df.columns:
     print(f"MSE: {mse:.2f}")
     print("Hệ số w (coefficients):", model.coef_)
     print("Intercept w0:", model.intercept_)
+
+    # Viz 5: Biểu đồ Hồi quy (Actual vs Predicted)
+    plt.figure(figsize=(8, 6))
+    plt.scatter(y_test, y_pred, alpha=0.5, color='purple', edgecolor='w')
+    plt.plot([y.min(), y.max()], [y.min(), y.max()], 'k--', lw=2) # Đường chéo tham chiếu
+    plt.xlabel('Thực tế (Actual Likes)')
+    plt.ylabel('Dự đoán (Predicted Likes)')
+    plt.title('Hồi quy: Số Like Thực tế vs Dự đoán')
+    plt.grid(True, alpha=0.3)
+    plt.savefig('chart/regression_actual_vs_predicted.png', dpi=300, bbox_inches='tight')
+    plt.close()
+    print("Đã lưu biểu đồ hồi quy vào chart/regression_actual_vs_predicted.png")
 else:
     print("Không có cột 'likes' → bỏ qua hồi quy.")
